@@ -15,5 +15,17 @@ public class Main {
                 Decidido a descubrir la verdad y liberar a la humanidad, Neo se une a la resistencia y enfrenta una lucha épica contra los agentes del sistema, especialmente el implacable Agente Smith. En el proceso, deberá aceptar su destino como El Elegido, capaz de alterar las reglas de la Matrix y desafiar el dominio de las máquinas.    
                 Matrix combina acción, filosofía y ciencia ficción en una historia que cuestiona la realidad, la libertad y el poder de la mente.
                 """+ "Fue lanzada en: " + fechaDeLanzamiento;
+
+        System.out.println(sinopsis);
+
+        if (incluidoEnElPlan) {
+            System.out.println("Esta incluida en el plan");
+        }else {
+            System.out.println("No esta incluida en el plan");
+        }
+
+        //casteo explicito
+        int clasificacion = (int) (media / 2);
+        System.out.println("Clasificacion: " + clasificacion);
     }
 }
