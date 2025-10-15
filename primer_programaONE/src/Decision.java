@@ -13,5 +13,10 @@ public class Decision {
 //            System.out.println("Pelicula antigua");
 //        }
 
+        if (incluidoEnElPlan || tipoPlan.equals("plus")) {
+            System.out.println("Esta incluida en el plan o es plus");
+        }else {
+            System.out.println("No esta incluida en el plan");
+        }
     }
 }
