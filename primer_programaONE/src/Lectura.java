@@ -11,6 +11,11 @@ public class Lectura {
         System.out.println("Ingrese nota: ");
         double notaPelicula = teclado.nextDouble();
 
+        System.out.println("Nombre: " + peliculaNombre);
+        System.out.println("Fecha de lanzamiento: " + fechaLanzamiento);
+        System.out.println("Nota de pelicula: " + notaPelicula);
+
+        teclado.close();
     }
 
 }
