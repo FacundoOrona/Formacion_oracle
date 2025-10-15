@@ -11,6 +11,9 @@ public class Loops {
             double nota = teclado.nextDouble();
             notaInicial = notaInicial + nota;
         }
+
+        double notaFinal = notaInicial / 3;
+        System.out.println("Nota final de Matrix: " + notaFinal );
     }
 
 }
