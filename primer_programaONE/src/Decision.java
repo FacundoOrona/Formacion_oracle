@@ -6,5 +6,12 @@ public class Decision {
         double notaPelicula = 8.1;
         double media = (8.1 + 8.6 + 1.0 + notaPelicula) / 3;
         String tipoPlan = "plus";
+
+//        if (fechaDeLanzamiento > 2022) {
+//            System.out.println("Peliculas recientes");
+//        } else {
+//            System.out.println("Pelicula antigua");
+//        }
+
     }
 }
