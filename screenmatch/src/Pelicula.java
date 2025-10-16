@@ -1,3 +1,5 @@
+public class Pelicula {
+
     String nombre;
     int fechaLanzamiento;
     int duracionMinutos;
@@ -21,3 +23,4 @@
         System.out.println("Nota promedio final: " + sumaNotas/mediaNotas);
     }
 
+}
