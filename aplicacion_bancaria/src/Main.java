@@ -62,5 +62,8 @@ public class Main {
             }
 
             System.out.println(); // Espacio visual entre repeticiones
+        } while (opcion != 4);
+
+        s.close();
     }
 }
