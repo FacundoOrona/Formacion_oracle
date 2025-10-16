@@ -10,6 +10,16 @@ public class Main {
         System.out.println("Tipo de cuenta: Corriente");
         System.out.println("Saldo disponible: $" + saldo);
 
+        do {
+            System.out.println("""
+                    *****************************************
+                    Ingrese el número de la opción que quiera accionar:
+                    1 - Consultar saldo
+                    2 - Retirar
+                    3 - Depositar
+                    4 - Salir
+                    *****************************************
+                    """);
 
     }
 }
