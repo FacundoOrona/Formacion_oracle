@@ -42,5 +42,25 @@ public class Main {
                         System.out.println("Saldo restante: $" + saldo);
                     }
                     break;
+
+                case 3:
+                    System.out.println("\nElegiste la Opción 3 - Depositar");
+                    System.out.print("Ingrese el monto que desea depositar: $");
+                    double deposito = s.nextDouble();
+                    saldo += deposito;
+                    System.out.println("Usted depositó $" + deposito);
+                    System.out.println("Saldo actualizado: $" + saldo);
+                    break;
+
+                case 4:
+                    System.out.println(" CERRANDO PROGRAMA...");
+                    break;
+
+                default:
+                    System.out.println("\n Opción inválida, por favor elija entre 1 y 4.");
+                    break;
+            }
+
+            System.out.println(); // Espacio visual entre repeticiones
     }
 }
