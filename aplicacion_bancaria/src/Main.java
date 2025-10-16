@@ -21,5 +21,26 @@ public class Main {
                     *****************************************
                     """);
 
+            System.out.print("Opción: ");
+            opcion = s.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("\nElegiste la Opción 1 - Consultar saldo");
+                    System.out.println("Saldo disponible: $" + saldo);
+                    break;
+
+                case 2:
+                    System.out.println("\nElegiste la Opción 2 - Retirar");
+                    System.out.print("Ingrese monto que quiera retirar: $");
+                    double retiro = s.nextDouble();
+                    if (retiro > saldo) {
+                        System.out.println("Fondos insuficientes. Saldo actual: $" + saldo);
+                    } else {
+                        saldo -= retiro;
+                        System.out.println("Usted retiró $" + retiro);
+                        System.out.println("Saldo restante: $" + saldo);
+                    }
+                    break;
     }
 }
