@@ -1,3 +1,4 @@
+public class Principal {
 
     public static void main(String[] args) {
 
@@ -23,3 +24,4 @@
         pelicula2.promedioNotasPelicula();
     }
 
+}
