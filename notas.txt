@@ -1,0 +1,66 @@
+El JDK (Java Development Kit) es un conjunto de herramientas y bibliotecas de software que permite el desarrollo de aplicaciones Java.
+
+En la preparación del entorno, instalaremos el JDK para comenzar a desarrollar nuestros primeros programas en Java.
+
+JRE = Jva Runtime Enviroment
+
+JDK = JRE + Otras herramientas
+
+Una cosa son editores de código como Visiul Studio Code, y otras es IDE (Entorno de desarrollo integrado) como IntelliJ, para Java
+
+JVM (Java Virtual Machine) es una herramienta muy importante en el mundo de Java, ya que permite que una aplicación se ejecute en múltiples sistemas operativos distintos. Para complementar tus estudios, he separado un artículo y un video que muestra más detalles sobre el proceso de compilación y ejecución de una aplicación Java a través de JVM.
+
+DATOS PRIMITIVOS:
+En Java, al igual que en la mayoría de los lenguajes de programación, existen los tipos primitivos, que son los tipos de datos más básicos y fundamentales del lenguaje. Se utilizan para representar valores simples y están definidos por el propio lenguaje.
+
+Java tiene ocho tipos primitivos diferentes: boolean, byte, char, short, int, long, float y double. Cada uno de estos tipos tiene sus propias características y rango de valores permitidos, como se describe a continuación.
+
+boolean:
+
+El tipo boolean se utiliza para representar valores lógicos y puede tener solo dos valores: true o false. Se utiliza en expresiones condicionales, bucles y otros casos en los que se desea evaluar si una determinada condición es verdadera o falsa.
+
+byte:
+
+El tipo byte se utiliza para representar valores numéricos enteros de 8 bits. Tiene un rango de valores de -128 a 127.
+
+char:
+
+El tipo char se utiliza para representar caracteres individuales. Puede almacenar cualquier carácter Unicode y se representa con comillas simples ('').
+
+short:
+
+El tipo short se utiliza para representar valores numéricos enteros de 16 bits. Tiene un rango de valores de -32.768 a 32.767.
+
+int:
+
+El tipo int se utiliza para representar valores numéricos enteros de 32 bits. Es uno de los tipos de datos más utilizados para representar números enteros en Java y tiene un rango de valores de -2.147.483.648 a 2.147.483.647.
+
+long:
+
+El tipo long se utiliza para representar valores numéricos enteros de 64 bits. Se utiliza para representar valores enteros muy grandes y tiene un rango de valores de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807.
+
+float:
+
+El tipo float se utiliza para representar valores numéricos de punto flotante, es decir, valores con decimales. Ocupa 32 bits de memoria. Puede representar números decimales con hasta siete dígitos y tiene una precisión limitada, lo que significa que puede redondear los números si son demasiado grandes o demasiado pequeños.
+
+double:
+
+El tipo double es similar al float, pero ocupa 64 bits de memoria y puede representar números decimales con hasta quince dígitos.
+
+El casting es un recurso utilizado en Java para convertir un tipo de dato en otro. Esta conversión puede ser realizada de forma automática por el compilador (conversión implícita) cuando el tipo de dato de destino es compatible con el tipo de dato de origen, o de forma manual (conversión explícita) utilizando el operador de casting.
+
+El casting se utiliza para permitir que tipos de datos incompatibles puedan ser utilizados en la misma operación o expresión. Por ejemplo, si un método espera un parámetro del tipo int y se desea pasar un valor del tipo double, es necesario hacer un casting para convertir el valor en int.
+
+Casting implícito
+
+El casting implícito se realiza automáticamente por el compilador cuando el tipo de dato de origen es compatible con el tipo de dato de destino. Por ejemplo, es posible asignar un valor de tipo int a una variable de tipo double, ya que el tipo double es más grande y puede almacenar todos los valores que el tipo int puede contener:
+
+int x = 10;
+double y = x; // casting implícito
+Casting explícito
+
+El casting explícito se realiza cuando el tipo de dato de origen es incompatible con el tipo de dato de destino. En este caso, debemos utilizar el operador de casting para realizar la conversión:
+
+double x = 10.5;
+int y = (int) x; // casting explícito
+En el ejemplo anterior, el valor de la variable x se convierte en un valor entero utilizando el casting explícito. Es importante tener en cuenta que, en este caso, la parte decimal será truncada y el valor asignado a la variable y será 10. 
