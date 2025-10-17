@@ -25,4 +25,13 @@ public class Titulo {
         System.out.println("Mi pelicula es: " + nombre);
     }
 
+    public void evaluarPelicula(double nota) {
+        sumaNotas += nota;
+        mediaNotas++;
+    }
+
+    public void promedioNotasPelicula() {
+        System.out.println("Nota promedio final: " + sumaNotas/mediaNotas);
+    }
+
 }
