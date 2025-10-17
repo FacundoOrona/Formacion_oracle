@@ -58,4 +58,21 @@ public class Titulo {
         this.duracionMinutos = duracionMinutos;
     }
 
+    public boolean isIncluidoPlan() {
+        return incluidoPlan;
+    }
+
+    public void setIncluidoPlan(boolean incluidoPlan) {
+        this.incluidoPlan = incluidoPlan;
+    }
+
+    public double getSumaNotas() {
+        return sumaNotas;
+    }
+
+    public void setSumaNotas(double sumaNotas) {
+        this.sumaNotas = sumaNotas;
+    }
+
+    public static double getMediaNotas() {
 }
