@@ -8,4 +8,7 @@ public class Pelicula extends Titulo {
         return director;
     }
 
+    public Pelicula() {
+        this.director = director;
+    }
 }
