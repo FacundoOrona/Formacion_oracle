@@ -9,5 +9,9 @@ public class Serie extends Titulo {
         return temporadas;
     }
 
+    public void setTemporadas(int temporadas) {
+        this.temporadas = temporadas;
+    }
+
     }
 }
