@@ -16,4 +16,13 @@ public class Titulo {
         this.fechaLanzamiento = fechaLanzamiento;
         this.nombre = nombre;
     }
+
+    public Titulo() {
+
+    }
+
+    public void muestraPelicula() {
+        System.out.println("Mi pelicula es: " + nombre);
+    }
+
 }
