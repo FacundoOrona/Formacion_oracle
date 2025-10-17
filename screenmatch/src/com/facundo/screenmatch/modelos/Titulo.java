@@ -42,4 +42,12 @@ public class Titulo {
         this.nombre = nombre;
     }
 
+    public int getFechaLanzamiento() {
+        return fechaLanzamiento;
+    }
+
+    public void setFechaLanzamiento(int fechaLanzamiento) {
+        this.fechaLanzamiento = fechaLanzamiento;
+    }
+
 }
