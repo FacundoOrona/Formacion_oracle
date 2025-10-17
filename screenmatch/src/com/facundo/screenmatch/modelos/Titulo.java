@@ -75,4 +75,10 @@ public class Titulo {
     }
 
     public static double getMediaNotas() {
+        return mediaNotas;
+    }
+
+    public static void setMediaNotas(double mediaNotas) {
+        Pelicula.setMediaNotas(mediaNotas);
+    }
 }
