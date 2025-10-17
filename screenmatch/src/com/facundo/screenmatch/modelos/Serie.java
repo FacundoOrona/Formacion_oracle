@@ -13,5 +13,11 @@ public class Serie extends Titulo {
         this.temporadas = temporadas;
     }
 
+    public int getEpisidosPorTemporada() {
+        return episidosPorTemporada;
+    }
+
+    public void setEpisidosPorTemporada(int episidosPorTemporada) {
+        this.episidosPorTemporada = episidosPorTemporada;
     }
 }
