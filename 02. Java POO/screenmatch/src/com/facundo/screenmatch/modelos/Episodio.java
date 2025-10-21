@@ -16,6 +16,10 @@ public class Episodio implements Clasificacion {
         this.numeroEp = numeroEp;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
