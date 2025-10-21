@@ -38,6 +38,11 @@ public class Principal {
         serie.setDuracionMinutos(106);
 
         //System.out.println(serie.getDuracionMinutos());
+
+        CalculadoraTiempo calculadoraTiempo = new CalculadoraTiempo();
+        calculadoraTiempo.incluye(pelicula);
+        calculadoraTiempo.incluye(pelicula2);
+        calculadoraTiempo.incluye(serie);
     }
 
 }
