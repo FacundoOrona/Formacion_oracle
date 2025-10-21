@@ -28,7 +28,6 @@ public class Principal {
         pelicula2.evaluarPelicula(8.2);
         pelicula2.evaluarPelicula(8.3);
 
-        pelicula2.promedioNotasPelicula();
         //pelicula2.promedioNotasPelicula();
 
         Serie serie = new Serie();
