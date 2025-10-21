@@ -13,4 +13,14 @@ public class Pelicula extends Titulo implements Clasificacion {
     public Pelicula() {
         this.director = director;
     }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    @Override
+    public int getDuracionMinutos() {
+        return super.getDuracionMinutos();
+    }
+
 }
