@@ -1,6 +1,8 @@
 package com.facundo.screenmatch.modelos;
 
-public class Pelicula extends Titulo {
+import com.facundo.screenmatch.calculos.Clasificacion;
+
+public class Pelicula extends Titulo implements Clasificacion {
 
     private String director;
 
