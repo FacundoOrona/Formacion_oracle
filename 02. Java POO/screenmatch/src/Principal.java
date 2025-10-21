@@ -1,4 +1,7 @@
+import com.facundo.screenmatch.calculos.CalculadoraTiempo;
+import com.facundo.screenmatch.calculos.FiltroRecomendacion;
 import com.facundo.screenmatch.modelos.Pelicula;
+import com.facundo.screenmatch.modelos.Serie;
 
 public class Principal {
 
@@ -18,7 +21,7 @@ public class Principal {
         pelicula2.setDuracionMinutos(120);
         pelicula2.setIncluidoPlan(true);
 
-        pelicula2.muestraPelicula();
+        //pelicula2.muestraPelicula();
 
         pelicula2.evaluarPelicula(2.2);
         pelicula2.evaluarPelicula(9.2);
@@ -26,6 +29,15 @@ public class Principal {
         pelicula2.evaluarPelicula(8.3);
 
         pelicula2.promedioNotasPelicula();
+        //pelicula2.promedioNotasPelicula();
+
+        Serie serie = new Serie();
+        serie.setNombre("Casa del Dragon");
+        serie.setTemporadas(1);
+        serie.setEpisidosPorTemporada(15);
+        serie.setDuracionMinutos(106);
+
+        //System.out.println(serie.getDuracionMinutos());
     }
 
 }
