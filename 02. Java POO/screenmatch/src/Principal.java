@@ -43,6 +43,7 @@ public class Principal {
         calculadoraTiempo.incluye(pelicula);
         calculadoraTiempo.incluye(pelicula2);
         calculadoraTiempo.incluye(serie);
+        System.out.println(pelicula.getDuracionMinutos());
     }
 
 }
