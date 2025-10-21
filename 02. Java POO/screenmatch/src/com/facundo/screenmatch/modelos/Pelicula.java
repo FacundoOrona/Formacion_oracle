@@ -23,4 +23,8 @@ public class Pelicula extends Titulo implements Clasificacion {
         return super.getDuracionMinutos();
     }
 
+    @Override
+    public int getClasificacion() {
+        return (int) (getSumaNotas() / 2);
+    }
 }
