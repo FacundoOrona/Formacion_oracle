@@ -20,4 +20,9 @@ public class Serie extends Titulo {
     public void setEpisidosPorTemporada(int episidosPorTemporada) {
         this.episidosPorTemporada = episidosPorTemporada;
     }
+
+    @Override
+    public int getDuracionMinutos() {
+        return super.getDuracionMinutos();
+    }
 }
