@@ -15,3 +15,11 @@ public class PrincipalConListas {
         var pelicula = new Pelicula(2021, "Señor de los anillos");
         pelicula.evalua(7);
 
+        Serie lost = new Serie(2000, "Lost" );
+        lost.evalua(2);
+
+        ArrayList<Titulo> lista = new ArrayList<>();
+        lista.add(pelicula);
+        lista.add(miPelicula);
+        lista.add(otraPelicula);
+        lista.add(lost);
