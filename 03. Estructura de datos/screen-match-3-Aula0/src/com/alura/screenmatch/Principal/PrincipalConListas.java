@@ -35,3 +35,9 @@ public class PrincipalConListas {
             }
         }
 
+//        System.out.println("*****************");
+//        lista.forEach(titulo -> System.out.println(titulo));
+//        System.out.println("*****************");
+//        lista.forEach(System.out::println);
+    }
+}
