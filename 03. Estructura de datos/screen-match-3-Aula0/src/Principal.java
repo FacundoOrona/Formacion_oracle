@@ -48,5 +48,7 @@ public class Principal {
         episodio.setSerie(lost);
         episodio.setTotalVisualizaciones(300);
         filtro.filtra(episodio);
+
+        
     }
 }
