@@ -14,6 +14,13 @@ public class Principal {
         miPelicula.setDuracionEnMinutos(180);
         System.out.println("Duración de la película: " + miPelicula.getDuracionEnMinutos());
 
+        miPelicula.muestraFichaTecnica();
+        miPelicula.evalua(8);
+        miPelicula.evalua(5);
+        miPelicula.evalua(10);
+        System.out.println("Total de evaluaciones: " + miPelicula.getTotalDeEvaluaciones());
+        System.out.println(miPelicula.calculaMediaEvaluaciones());
+
 
         Serie lost = new Serie(2000, "Lost" );
         lost.muestraFichaTecnica();
