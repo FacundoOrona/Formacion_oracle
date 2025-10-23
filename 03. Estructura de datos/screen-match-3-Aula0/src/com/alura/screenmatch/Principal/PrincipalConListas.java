@@ -23,3 +23,15 @@ public class PrincipalConListas {
         lista.add(miPelicula);
         lista.add(otraPelicula);
         lista.add(lost);
+
+        for (Titulo Item: lista){
+            System.out.println(Item.getNombre());
+            if (Item instanceof Pelicula peliculaIt){
+                //Pelicula peliculaIt = (Pelicula) Item;
+                System.out.println(peliculaIt.getClasificacion());
+            } else if (Item instanceof Serie) {
+                Serie serieIt = (Serie) Item;
+                System.out.println(serieIt.getFechaDeLanzamiento());
+            }
+        }
+
