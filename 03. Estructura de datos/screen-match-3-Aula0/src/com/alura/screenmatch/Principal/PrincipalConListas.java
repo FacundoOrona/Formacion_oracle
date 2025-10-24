@@ -56,5 +56,9 @@ public class PrincipalConListas {
         Collections.sort(lista);
         System.out.println("Lista de titulos ord por nombre: " + lista);
 
+        lista.sort(Comparator.comparing(Titulo::getFechaDeLanzamiento));
+        System.out.println("Lista de titulos ord por fecha: " + lista);
+
+
     }
 }
