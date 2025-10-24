@@ -52,5 +52,9 @@ public class PrincipalConListas {
         System.out.println("Lista de artistas: " + listaDeArtistas);
         Collections.sort(listaDeArtistas);
         System.out.println("Lista de artistas: " + listaDeArtistas);
+
+        Collections.sort(lista);
+        System.out.println("Lista de titulos ord por nombre: " + lista);
+
     }
 }
