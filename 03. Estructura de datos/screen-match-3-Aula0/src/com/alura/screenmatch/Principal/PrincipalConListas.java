@@ -42,5 +42,15 @@ public class PrincipalConListas {
 //        lista.forEach(titulo -> System.out.println(titulo));
 //        System.out.println("*****************");
 //        lista.forEach(System.out::println);
+
+        ArrayList<String> listaDeArtistas = new ArrayList<>();
+        listaDeArtistas.add("Zell");
+        listaDeArtistas.add("Cero*");
+        listaDeArtistas.add("EnzoCeroBulto");
+        listaDeArtistas.add("Cluster");
+        listaDeArtistas.add("Pabloxo");
+        System.out.println("Lista de artistas: " + listaDeArtistas);
+        Collections.sort(listaDeArtistas);
+        System.out.println("Lista de artistas: " + listaDeArtistas);
     }
 }
