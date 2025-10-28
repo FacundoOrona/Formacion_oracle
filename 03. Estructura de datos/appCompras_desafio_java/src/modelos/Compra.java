@@ -8,6 +8,15 @@ public class Compra implements Comparable<Compra> {
         this.descripcion = descripcion;
         this.valor = valor;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
     @Override
     public String toString() {
         return "Compra: *" +
