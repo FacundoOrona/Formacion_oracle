@@ -33,3 +33,13 @@ public class Main {
             }
         }
         System.out.println("***********************");
+        System.out.println("COMPRAS REALIZADAS:\n");
+        Collections.sort(tarjeta.getListaDeCompras());
+        for (Compra compra : tarjeta.getListaDeCompras()) {
+            System.out.println(compra.getDescripcion() + " - " +compra.getValor());
+        }
+        System.out.println("\n***********************");
+        System.out.println("\nSaldo de la tarjeta: " +tarjeta.getSaldo());
+    }
+
+}
