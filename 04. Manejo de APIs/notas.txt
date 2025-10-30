@@ -1,0 +1,27 @@
+JSON (JavaScript Object Notation)es un formato de datos ligero y popular para intercambiar información entre sistemas y se puede utilizar en varios lenguajes de programación.
+
+JSON se compone de dos tipos de estructuras de datos: objetos y arrays. Un objeto es una colección de pares clave-valor, donde las claves son strings y los valores pueden ser strings, números, booleanos, objetos o arrays. Por ejemplo:
+
+HTTP (HyperText Transfer Protocol) es un protocolo de comunicación que permite la transferencia de información en Internet. Es la base para la comunicación entre los navegadores y los servidores web, utilizándose para transmitir contenidos como textos, imágenes y vídeos.
+
+HTTP se desarrolló en la década de 1990 y se basa en un modelo cliente-servidor, donde un cliente (navegador web) realiza solicitudes a un servidor para obtener información y el servidor responde con los datos solicitados. HTTP utiliza TCP (Transmission Control Protocol) como protocolo de transporte para garantizar una entrega de datos confiable.
+
+HTTP utiliza métodos para especificar el tipo de operación que se debe realizar en el servidor. Los métodos principales son GET, POST, PUT y DELETE. El método GET se utiliza para solicitar datos del servidor, mientras que POST se utiliza para enviar información al servidor. PUT se utiliza para actualizar información en el servidor y DELETE se utiliza para eliminar información.
+
+Además de los métodos, HTTP utiliza códigos de status para indicar el resultado de la operación realizada. Los códigos de status van del 100 al 599 y se dividen en cinco clases:
+
+1xx: Informaciones
+2xx: Éxito
+3xx: Redirección
+4xx: error del cliente
+5xx: error del servidor
+Si quieres profundizar en tus conocimientos sobre este protocolo, te recomendamos nuestro curso HTTP: La base de internet.
+
+Los patrones de diseño, también conocidos como design patterns, son soluciones reutilizables a problemas comunes de desarrollo de software. Surgieron en la década de 1990, cuando un grupo de desarrolladores identificó que muchos proyectos de software presentaban problemas similares, que podían resolverse con soluciones similares.
+
+Los patrones de diseño se pueden dividir en tres categorías:
+
+Patrones de creación: son patrones que se ocupan de la creación de objetos, con el objetivo de garantizar la flexibilidad y la reutilización del código. Algunos ejemplos de patrones de creación son: Factory Method, Builder y Singleton.
+Patrones de estructura: son patrones que tratan de la organización de objetos en estructuras más grandes, buscando simplificar la comunicación entre objetos y reducir el acoplamiento entre ellos. Algunos ejemplos de patrones de estructura son: Adapter, Facade y Composite.
+Patrones de comportamiento: son patrones que tratan la comunicación entre objetos, buscando definir el comportamiento esperado en situaciones específicas. Algunos ejemplos de patrones de comportamiento son: Observer, Command y Strategy.
+Al utilizar patrones de diseño, es posible aumentar la calidad del código, haciéndolo más legible, flexible y fácil de mantener.
