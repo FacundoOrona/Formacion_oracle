@@ -15,6 +15,16 @@ public class PrincipalConBusquedaAPI {
         System.out.println("Escriba el nombre la pelicula que desee buscar");
         var busqueda = scanner.nextLine();
 
+        String direccion = "https://www.omdbapi.com/?t=" + busqueda + "&apikey=a1de3692";
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(direccion))
+                .build();
+        HttpResponse<String> response = client
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println(response.body());
     }
 
 }
