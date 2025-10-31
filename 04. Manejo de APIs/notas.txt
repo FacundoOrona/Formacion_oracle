@@ -33,3 +33,115 @@ En Java, las bibliotecas son colecciones de clases e interfaces que ofrecen una 
 Los frameworks, por otro lado, son estructuras de software que proporcionan una arquitectura básica para desarrollar aplicaciones. Incluyen bibliotecas, patrones y mejores prácticas para guiar el proceso de desarrollo de aplicaciones. Se puede considerar un framework como una "fábrica de aplicaciones estandarizadas" que proporciona los componentes necesarios para crear una aplicación, así como un conjunto de reglas y pautas para guiarlo en el proceso, como por ejemplo una serie de carpetas en donde colocar ciertos archivos.
 
 Hay muchos frameworks populares en Java, cada uno con sus propias características y objetivos. Algunos ejemplos incluyen Spring Framework, que es un framework que facilita la creación de aplicaciones web y APIs Rest complejas en Java; Hibernate, que es un framework de mapeo objeto-relacional y simplifica enormemente el proceso de integración de una aplicación Java con una base de datos relacional.
+
+anzado oficialmente en Java 16, pero disponible desde Java 14 de forma experimental, Record es una característica que le permite representar una clase inmutable, que contiene solo atributos, constructor y métodos de lectura, de una manera muy simple y sencilla.
+
+Esta característica encaja perfectamente cuando necesitamos crear un objeto solo para representar datos, sin ningún tipo de comportamiento.
+
+Para crear una clase inmutable, sin utilizar Record, era necesario escribir mucho código. Veamos un ejemplo de una clase que representa un teléfono:
+public final class Telefono {
+    private final String codigoDeArea;
+    private final String numero;
+
+    public Telefono(String codigoDeArea, String numero) {
+        this.codigoDeArea = codigoDeArea;
+        this.numero = numero;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigoDeArea, numero);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (!(obj instanceof Telefono)) {
+            return false;
+        } else {
+            Telefono other = (Telefono) obj;
+            return Objects.equals(codigoDeArea, other.codigoDeArea)
+              && Objects.equals(numero, other.numero);
+        }
+    }
+
+    public String getCodigoDeArea() {
+        return this.codigoDeArea;
+    }
+
+    public String getNumero() {
+        return this.numero;
+    }
+}
+
+Ahora con Record, todo ese código puede ser resumido con una única linea:
+public record Telefono(String codigoDeArea, String numero){}
+
+En el fondo, Java transformará ese Record en una clase inmutable, muy similar al código mostrado anteriormente.
+
+La inmutabilidad, mencionada anteriormente al hablar de Record, es un concepto importante en Java, que se refiere a la capacidad de un objeto de no poder modificarse una vez creado. Existen algunas clases que son inmutables por defecto, como las clases String, Integer, Boolean, entre otras. Esto significa que una vez creado un objeto de estas clases, su estado no se puede modificar.
+
+Ejemplifiquemos. Dado el record a continuación:
+
+public record Estudiante(String nombre, int edad) {}
+
+Una vez creado un objeto Estudiante, sus valores no se pueden modificar:
+
+Estudiante estudiante1 = new Estudiante(“Alicia”, 19);
+Copia el código
+Observe que después de esta creación, no puedo setear otro nombre o edad para el objeto estudiante1.
+
+estudiante1.setNombre(“Maria”); //no es posible
+estudiante1.nombre = “Maria”; //no es posible
+
+Cualquiera de los intentos anteriores presentará un error de compilación, ya que no es posible asignar ningún otro nombre a la variable estudiante1.
+
+Respecto al record, está bastante claro, ¿verdad? Pero ¿qué pasa con la clase String, por ejemplo? Puedo hacer los siguiente en el código:
+
+String nombre = “Maria”;
+nombre = “Alice”;
+
+Si la clase String es inmutable, lo correcto sería que no pueda asignar el contenido “Alice” a la variable nombre, ¿correcto?
+
+En el caso de la clase String y otras clases inmutables que mencioné anteriormente, la variable nombre contiene una referencia al objeto de clase String que contiene el valor "Maria".
+
+Sin embargo, cuando intentas cambiar el valor del String, lo que realmente sucede es que se crea un nuevo objeto de la clase String con el nuevo valor, y la variable se actualiza para almacenar una referencia al nuevo objeto.
+
+Por lo tanto, podemos decir que la clase String es inmutable, porque una vez que se crea un objeto de la clase String, no se puede cambiar. Sin embargo, las variables que almacenan referencias a objetos de la clase String se pueden actualizar para hacer referencia a nuevos objetos, que se crean a partir del contenido del objeto original.
+
+La inmutabilidad es importante por varias razones, entre ellas:
+
+Concurrencia: los objetos inmutables son seguros de usar en entornos concurrentes (o paralelismo) ya que no hay necesidad de sincronización.
+Seguridad: los objetos inmutables están protegidos contra cambios accidentales o maliciosos.
+Rendimiento: los objetos inmutables se pueden almacenar en caché y reutilizar, lo que puede mejorar el rendimiento.
+
+Aprendimos que cuando ocurre una excepción, Java le permite manejar el error usando la declaración try-catch. Sin embargo, también existe el bloque finally, que es opcional, pero puede resultar útil en determinadas situaciones.
+
+Finally se utiliza para ejecutar un bloque de código independientemente de si ocurre o no una excepción, es decir, siempre se ejecuta. Esto puede resultar útil cuando necesitamos ejecutar código tanto en el try (si no se produce una excepción) como en el catch (si se produce una excepción). Por ejemplo, supongamos que tiene el siguiente código:
+
+try {
+  metodoQuePuedeLanzarExcepcion();
+  System.out.println("Se ejecutó");
+
+  System.out.println("Finalizó!");
+} catch (Exception e) {
+  System.out.println("Dio un error!");
+
+  System.out.println("Finalizó!");
+}
+Copia el código
+Observe en el código anterior que la instrucción System.out.println("Finalizó!"); siempre debe ejecutarse, independientemente de si ocurrió una excepción o no. Pero el problema es que acabó teniendo que duplicarse tanto en el try como en el catch. El bloque finally nos ayuda a evitar esta duplicación de código:
+
+try {
+  metodoQuePuedeLanzarExcepcion();
+  System.out.println("Se ejecutó");
+} catch (Exception e) {
+  System.out.println("Dio un error!");
+} finally {
+  System.out.println("Finalizó!");
+}
+Copia el código
+Note que ahora la instrucción aparece solo una vez, dentro del bloque finally, evitando así duplicaciones innecesarias de código.
+
+Finally se usa a menudo en situaciones en las que es necesario limpiar recursos, cerrar conexiones de bases de datos o cerrar archivos que se abrieron en el bloque try.
