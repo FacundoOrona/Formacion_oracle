@@ -27,7 +27,10 @@ public class PrincipalConBusquedaAPI {
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(response.body());
+        String json = response.body();
+        System.out.println(json);
+
+        Gson gson = new Gson();
     }
 
 }
