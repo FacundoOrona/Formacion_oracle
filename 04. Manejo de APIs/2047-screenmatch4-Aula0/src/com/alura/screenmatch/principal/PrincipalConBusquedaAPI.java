@@ -34,8 +34,6 @@ public class PrincipalConBusquedaAPI {
         String json = response.body();
         System.out.println(json);
 
-        Gson gson = new Gson();
-        Titulo miTitulo = gson.fromJson(json, Titulo.class);
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                 .create();
@@ -45,9 +43,6 @@ public class PrincipalConBusquedaAPI {
         Titulo miTitulo = new Titulo(miTituloOmdb);
         System.out.println(miTitulo);
 
-        System.out.println(miTitulo.getNombre());
-        System.out.println(miTitulo.getFechaDeLanzamiento());
-        System.out.println(miTitulo.toString());
     }
 
 }
