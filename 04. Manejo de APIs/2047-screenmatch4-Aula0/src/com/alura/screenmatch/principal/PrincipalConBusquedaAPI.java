@@ -31,6 +31,11 @@ public class PrincipalConBusquedaAPI {
         System.out.println(json);
 
         Gson gson = new Gson();
+        Titulo miTitulo = gson.fromJson(json, Titulo.class);
+
+        System.out.println(miTitulo.getNombre());
+        System.out.println(miTitulo.getFechaDeLanzamiento());
+        System.out.println(miTitulo.toString());
     }
 
 }
