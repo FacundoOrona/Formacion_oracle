@@ -84,6 +84,7 @@ public class Titulo implements Comparable<Titulo>{
         return "Titulo{" +
                 "nombre='" + nombre + '\'' +
                 ", fechaDeLanzamiento=" + fechaDeLanzamiento +
+                ", duracionEnMinutos=" + duracionEnMinutos +
                 '}';
     }
 }
