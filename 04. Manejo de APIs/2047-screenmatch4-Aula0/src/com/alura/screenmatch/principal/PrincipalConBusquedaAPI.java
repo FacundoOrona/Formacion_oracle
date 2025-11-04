@@ -1,5 +1,6 @@
 package com.alura.screenmatch.principal;
 
+import com.alura.screenmatch.excepcion.ErrorEnConversionDuracionException;
 import com.alura.screenmatch.modelos.Titulo;
 import com.alura.screenmatch.modelos.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -22,7 +23,9 @@ public class PrincipalConBusquedaAPI {
         var busqueda = scanner.nextLine();
         scanner.close();
 
-        String direccion = "https://www.omdbapi.com/?t=" + busqueda + "&apikey=a1de3692";
+        String direccion = "https://www.omdbapi.com/?t=" +
+                busqueda.replace(" ","+") +
+                "&apikey=a1de3692";
 
         try {
             HttpClient client = HttpClient.newHttpClient();
@@ -33,13 +36,13 @@ public class PrincipalConBusquedaAPI {
                     .send(request, HttpResponse.BodyHandlers.ofString());
 
             String json = response.body();
-            System.out.println(json);
+            //System.out.println(json);
 
             Gson gson = new GsonBuilder()
                     .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                     .create();
             TituloOmdb miTituloOmdb = gson.fromJson(json, TituloOmdb.class);
-            System.out.println(miTituloOmdb);
+            //System.out.println(miTituloOmdb);
 
             Titulo miTitulo = new Titulo(miTituloOmdb);
             System.out.println("Titulo ya convertido: " + miTitulo);
@@ -50,12 +53,13 @@ public class PrincipalConBusquedaAPI {
         } catch (IllegalArgumentException e) {
             System.out.println("Ocurrio un error: IllegalArgumentException");
             System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Ocurrio un erro inesperado");
+        } catch (ErrorEnConversionDuracionException e) {
             System.out.println(e.getMessage() );
         }
 
+        System.out.println("**********************");
         System.out.println("Finalizo la ejecucion");
+        System.out.println("**********************");
 
     }
 
