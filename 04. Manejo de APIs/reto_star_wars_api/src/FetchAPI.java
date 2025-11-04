@@ -1,6 +1,5 @@
 import modelos.Pelicula;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -19,14 +18,15 @@ public class FetchAPI {
                 .uri(direccion)
                 .build();
 
-        HttpResponse<String> response = null;
         try {
+            HttpResponse<String> response = null;
             response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
+            return new Gson().fromJson(response.body(), Pelicula.class);
+        } catch (Exception e) {
             throw new RuntimeException("No se encontro la pelicula deseada");
         }
 
-        return new Gson().fromJson(response.body(), Pelicula.class);
+
     }
 }
