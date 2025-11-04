@@ -189,3 +189,75 @@ Copia el código
 En el ejemplo anterior, tratamos con dos excepciones diferentes: NullPointerException e IllegalArgumentException. Si alguna de estas excepciones se produce dentro del bloque try, se ejecutará el mismo bloque catch.
 
 Una nota importante a recordar es que el uso de multi-catch solo se permite para excepciones que no están relacionadas por una jerarquía de herencia. Si dos excepciones comparten una jerarquía de herencia, debes manejarlas en bloques catch separados.
+
+Java cuenta con un paquete llamado java.io, el cual es uno de los paquetes más importantes del lenguaje, ya que proporciona clases e interfaces para entrada y salida de datos en diversos formatos, como archivos, red, teclado, entre otros. Conozcamos las clases principales de este paquete.
+
+La clase File
+La clase File representa un archivo o directorio en el sistema de archivos de la computadora, lo que le permite crear, eliminar, listar y manipular archivos y directorios. Para crear un objeto File, debe pasar la ruta del archivo o directorio como argumento al constructor. Por ejemplo:
+
+File file = new File("C:\\miArchivo.txt");
+Copia el código
+En el código anterior se creó un objeto File que apunta al archivo "miArchivo.txt" ubicado en la raíz del disco C:.
+
+La clase File tiene varios métodos útiles para interactuar con archivos y directorios, como exists(), canRead(), canWrite(), isDirectory(), isFile(), mkdir() y delete().
+
+La clase FileReader y FileWriter
+Las clases FileReader y FileWriter se utilizan para leer y escribir datos en archivos de texto; la clase FileReader lee caracteres de un archivo de texto, mientras que la clase FileWriter escribe los caracteres.
+
+Para usar la clase FileReader, necesita crear un objeto FileReader pasando un objeto File como argumento, que contenga la ruta del archivo que quieres leer. Luego puede leer los datos del archivo usando el método read() o read(char[]). Por ejemplo:
+
+File file = new File("C:\\miArchivo.txt");
+FileReader reader = new FileReader(file);
+
+int data = reader.read();
+while (data != -1) {
+    System.out.print((char) data);
+    data = reader.read();
+}
+reader.close();
+Copia el código
+En el código anterior se lee el contenido del archivo "miArchivo.txt" y se imprime su contenido en la consola.
+
+La clase FileWriter sigue el mismo proceso, pero haciendo lo contrario, es decir, escribiendo caracteres en el archivo. Por ejemplo:
+
+File file = new File("C:\\salida.txt");
+FileWriter writer = new FileWriter(file);
+writer.write("Hola mundo!");
+writer.close();
+Copia el código
+En el código anterior, se escribe un mensaje en el archivo llamado "salida.txt".
+
+El paquete java.io también proporciona otras clases útiles como:
+
+BufferedReader y BufferedWriter: se utilizan para leer y escribir archivos de texto de manera eficiente, leyendo y escribiendo una línea a la vez. Utilizan un búfer para almacenar datos, lo que hace que la lectura y la escritura sean más rápidas que cuando se hacen de un carácter a la vez;
+FileInputStream y FileOutputStream: se utilizan para leer y escribir datos binarios en un archivo. Se utilizan para leer y escribir datos en archivos que no son de texto, como imágenes y archivos de audio;
+ObjectInputStream y ObjectOutputStream: se utilizan para leer y escribir objetos en archivos. Esto le permite almacenar objetos Java en archivos para su uso posterior o para transferirlos entre diferentes aplicaciones.
+
+Aprendimos cómo guardar un archivo a través de la clase FileWriter, pero si desea hacer lo contrario, es decir, leer el contenido de un archivo existente en Java, puede hacerlo usando la clase Scanner.
+
+La clase Scanner es una clase estándar de Java que le permite leer datos de diferentes fuentes, incluidos archivos. Para leer un archivo con esta clase, simplemente cree una instancia de la misma y pase un objeto de tipo File como argumento, que contenga la ruta del archivo. Por ejemplo:
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class LecturaDeArchivo{
+    public static void main(String[] args) {
+        try {
+            File archivo = new File("archivo.json");
+            Scanner scanner = new Scanner(archivo);
+
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine();
+                System.out.println(linea);
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Archivo no encontrado!");
+        }
+    }
+}
+Copia el código
+En el código anterior, leemos un archivo llamado archivo.json e imprimimos el contenido del archivo línea por línea en la consola. El método hasNextLine() verifica si hay más líneas para leer, mientras que el método nextLine() lee la siguiente línea del archivo.
+
+La clase Scanner también se puede utilizar para leer datos de entrada de otras fuentes, como el teclado y strings. Además, ofrece muchas opciones para personalizar la forma en que se leen los datos, incluida la capacidad de utilizar expresiones regulares para analizar el texto.
