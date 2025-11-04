@@ -145,3 +145,23 @@ Copia el código
 Note que ahora la instrucción aparece solo una vez, dentro del bloque finally, evitando así duplicaciones innecesarias de código.
 
 Finally se usa a menudo en situaciones en las que es necesario limpiar recursos, cerrar conexiones de bases de datos o cerrar archivos que se abrieron en el bloque try.
+
+En Java, las excepciones están organizadas en una jerarquía de clases. Todas las excepciones son subclases de la clase Throwable, que tiene dos subclases principales: Exception y Error.
+
+Las excepciones que heredan de la clase Exception se denominan excepciones verificadas (checked exceptions). Esto significa que estas excepciones deben ser tratadas explícitamente en un bloque try-catch o declaradas en una cláusula throws en la firma del método (luego de los paréntesis de los parámetros y antes de las llaves). Un ejemplo es la clase IOException, que indica un problema relacionado con la lectura/escritura de datos.
+
+Las excepciones que heredan de la clase Error representan errores hacen que el sistema no se pueda recuperar, como falta de memoria o fallas internas. Un ejemplo es la clase OutOfMemoryError, que indica que Java no pudo obtener suficiente memoria del sistema operativo para ejecutar correctamente la aplicación.
+
+Además, también existe la clase RuntimeException, que es una subclase directa de Exception, y las clases que heredan de ella se denominan excepciones no verificadas (unchecked exception). Las excepciones no verificadas indican errores lógicos en el código, como la NullPointerException, que indica acceso a algún atributo o método de un objeto que es null, es decir, que no fue instanciado o se le asignó el valor nulo.
+
+Al manejar excepciones en un bloque try-catch, es importante considerar la jerarquía de excepciones. Es posible capturar excepciones de una clase madre en un bloque catch que captura excepciones de una clase hija. Sin embargo, lo contrario no es posible. Esto significa que si un bloque catch captura excepciones de una clase hija, no podrá capturar excepciones de una clase madre. Por ejemplo, si coloco en el catch que quiero capturar RuntimeException, no voy a poder capturar excepciones de la clase Exception (porque es la madre de RuntimeException) dentro de ese catch. Pero si en ese bloque catch digo que voy a capturar Exception, entonces toda excepcion que sea Exception o que herede de Exception (como RuntimeException) sí entrará en ese bloque catch.
+
+try{
+    //Ejemplo de un código a ser ejecutado
+}catch(RuntimeException e){
+    //Van a entrar las excepciones que sean del tipo RuntimeException o hijas de ella,
+    // pero no las del tipo Exception (que es la madre de RuntimeException)
+}catch (Exception e){
+    //Van a entrar todas las excepciones del tipo Exception o hijas de ella
+    //incluida las excepciones del tipo RuntimeException
+}
