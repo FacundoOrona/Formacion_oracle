@@ -165,3 +165,27 @@ try{
     //Van a entrar todas las excepciones del tipo Exception o hijas de ella
     //incluida las excepciones del tipo RuntimeException
 }
+
+A partir de Java 7, el lenguaje introdujo una nueva característica llamada "multi-catch", que le permite capturar múltiples excepciones en un solo bloque catch. Esta funcionalidad puede hacer que el código sea más conciso y legible, reduciendo la repetición del código.
+
+Usar multi-catch es muy simple. En lugar de tener varios bloques catch para manejar diferentes excepciones, puede agruparlos en un solo bloque usando el caracter | para separar las excepciones. Por ejemplo, supongamos que escribió el siguiente código:
+
+try {
+    metodoQuePuedeLanzarUnaExcepcion();
+} catch (NumberFormatException e) {
+    System.out.println("tratando error...");
+} catch (IllegalArgumentException e) {
+    System.out.println("tratando error...");
+}
+Copia el código
+Como el tratamiento del error es el mismo para ambas excepciones, el código anterior podría haberse escrito usando multi-catch:
+
+try {
+    metodoQuePuedeLanzarUnaExcepcion();
+} catch (NullPointerException | IllegalArgumentException e) {
+    System.out.println("tratando error...");
+}
+Copia el código
+En el ejemplo anterior, tratamos con dos excepciones diferentes: NullPointerException e IllegalArgumentException. Si alguna de estas excepciones se produce dentro del bloque try, se ejecutará el mismo bloque catch.
+
+Una nota importante a recordar es que el uso de multi-catch solo se permite para excepciones que no están relacionadas por una jerarquía de herencia. Si dos excepciones comparten una jerarquía de herencia, debes manejarlas en bloques catch separados.
