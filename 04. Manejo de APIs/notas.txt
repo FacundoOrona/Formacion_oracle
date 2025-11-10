@@ -1,3 +1,4 @@
+
 JSON (JavaScript Object Notation)es un formato de datos ligero y popular para intercambiar información entre sistemas y se puede utilizar en varios lenguajes de programación.
 
 JSON se compone de dos tipos de estructuras de datos: objetos y arrays. Un objeto es una colección de pares clave-valor, donde las claves son strings y los valores pueden ser strings, números, booleanos, objetos o arrays. Por ejemplo:
