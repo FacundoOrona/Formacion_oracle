@@ -3,6 +3,7 @@ package com.aluracursos.screenmatch.principal;
 import com.aluracursos.screenmatch.model.DatosEpisodio;
 import com.aluracursos.screenmatch.model.DatosSerie;
 import com.aluracursos.screenmatch.model.DatosTemporada;
+import com.aluracursos.screenmatch.model.Episodio;
 import com.aluracursos.screenmatch.service.ConsumoAPIService;
 import com.aluracursos.screenmatch.service.ConvierteDatosService;
 
@@ -60,7 +61,6 @@ public class Principal {
                 .sorted()
                 .limit(5)
                 .forEach(System.out::println);
-
 
     }
 }
