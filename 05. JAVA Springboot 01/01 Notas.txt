@@ -222,3 +222,106 @@ Otra línea
 null
 
 Observa que en la última línea del código, al intentar incluir un String "texto" en nuestra cajaDeValor, al ejecutar este código obtuvimos un retorno nulo, ya que solo realizamos la suma si ambos tipos eran iguales.
+
+Las colecciones son estructuras de datos fundamentales en Java que nos permiten almacenar y manipular conjuntos de elementos de manera eficiente. Están implementadas a través de la API de colecciones de Java, que forma parte del paquete java.util. Las colecciones proporcionan una variedad de clases e interfaces para almacenar y organizar datos de diferentes maneras, atendiendo a diversas necesidades y escenarios.
+
+La API de colecciones de Java incluye interfaces, clases abstractas y clases concretas para representar diferentes tipos de colecciones. Algunas de las interfaces principales de colecciones son:
+
+List: Una colección ordenada que permite elementos duplicados. Los elementos se acceden mediante índices.
+Set: Una colección que no permite elementos duplicados y normalmente no tiene un orden definido.
+Queue: Una colección que representa una cola, donde los elementos se agregan al final y se eliminan del principio.
+Map: Una colección de pares clave-valor, donde cada clave es única y mapeada a un valor correspondiente.
+Además de estas interfaces, la API de colecciones también incluye varias clases concretas que implementan estas interfaces, como ArrayList, LinkedList, HashSet, TreeSet, HashMap, TreeMap, entre otras.
+
+Una de las interfaces más utilizadas es List. Como se mencionó anteriormente, List es una interfaz que define una secuencia ordenada de elementos, donde cada elemento tiene una posición específica. Al declarar una variable de este tipo, indicamos que trabajaremos con una colección que mantiene el orden de los elementos.
+
+Una de las principales razones para usar List es la flexibilidad que ofrece. Podemos agregar, eliminar y acceder a elementos de manera fácil e intuitiva. Además, también permite la duplicación de elementos, es decir, podemos tener elementos repetidos en la colección. Otra ventaja es la posibilidad de recorrer los elementos de manera secuencial, utilizando bucles de repetición como el for-each, lo que facilita la manipulación de los elementos y la realización de operaciones en masa.
+
+Aquí tienes un ejemplo práctico del uso de List en un código Java:
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class EjemploList {
+    public static void main(String[] args) {
+        // Creando un objeto del tipo List para almacenar números enteros
+        List<Integer> numeros = new ArrayList<>();
+
+        // Agregando elementos a la lista
+        numeros.add(10);
+        numeros.add(20);
+        numeros.add(30);
+
+        // Accediendo a elementos de la lista
+        System.out.println("Primer elemento: " + numeros.get(0)); // Salida: 10
+        System.out.println("Segundo elemento: " + numeros.get(1)); // Salida: 20
+        System.out.println("Tercer elemento: " + numeros.get(2)); // Salida: 30
+
+        // Recorriendo los elementos de la lista
+        for (Integer numero : numeros) {
+            System.out.println(numero);
+        }
+
+        // Eliminando un elemento de la lista
+        numeros.remove(1); // Elimina el elemento en el índice 1 (20)
+
+        // Verificando el tamaño de la lista
+        System.out.println("Tamaño de la lista: " + numeros.size()); // Salida: 2
+    }
+}
+Copia el código
+Además, Java también tiene otras colecciones como Set y Map. Set es una colección que no permite elementos duplicados, mientras que Map es una colección que asocia claves a valores, permitiendo la recuperación rápida de un elemento a través de su clave.
+
+Las colecciones de Java son extremadamente útiles en diversas situaciones, como almacenar datos en memoria, realizar operaciones de búsqueda, ordenación y filtrado. Nos ayudan a organizar y manipular grandes cantidades de datos de manera eficiente y elegante.
+
+Las funciones lambda son un recurso muy útil en el lenguaje de programación Java. Pueden ayudar a simplificar nuestro código y hacerlo más fácil de leer y entender. Pero antes de avanzar, comencemos desde el principio.
+
+¿Qué son las funciones Lambda?
+
+Las funciones Lambda, también llamadas funciones anónimas, son una forma de definir funciones que se utilizan con frecuencia solo una vez, directamente en el lugar donde se van a utilizar.
+
+En la programación convencional, normalmente definimos una función en algún lugar de nuestro código y luego la llamamos por su nombre en otro lugar, siempre que necesitemos usarla.
+
+Sin embargo, a veces necesitamos una función que se utilice solo en un lugar de nuestro código. Para estos casos, puede ser más simple y directo definir esta función directamente en el lugar donde se utilizará, sin darle un nombre, es decir, utilizando una función Lambda.
+
+La principal ventaja del uso de funciones lambda es la simplificación del código y la mejora en la legibilidad, ya que la función se define justo donde se usará.
+
+¿Cómo usamos las funciones Lambda en Java?
+
+En Java, una función lambda se define de la siguiente manera:
+
+java
+
+(argumentos) -> { cuerpo-de-la-función }
+Copia el código
+Por ejemplo, podemos definir una función lambda que sume dos números de la siguiente manera:
+
+java
+
+(a, b) -> { return a + b; }
+Copia el código
+Aquí, a y b son los argumentos de nuestra función. El cuerpo de la función, que es el código que se ejecutará cuando se llame a la función, está entre llaves {}. En este caso, el cuerpo de la función es solo una línea que devuelve la suma de a y b.
+
+En Java, las funciones lambda se utilizan generalmente con interfaces funcionales. Una interfaz funcional es una interfaz que contiene solo un único método. La función lambda luego proporciona la implementación de ese único método.
+
+Ejemplos de uso de funciones Lambda
+
+Vamos a un ejemplo concreto para entenderlo mejor. Supongamos que tenemos una lista de números y queremos imprimir solo los números pares de esa lista. Sin el uso de funciones lambda, podríamos hacer algo así:
+
+List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+for(Integer i: lista) {
+  if(i % 2 == 0) {
+    System.out.println(i);
+  }
+}
+Copia el código
+Pero con el uso de funciones lambda, podemos simplificar este código:
+
+List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+lista.stream().filter(i -> i % 2 == 0).forEach(System.out::println);
+Copia el código
+En el código anterior, creamos un stream de nuestra lista, filtramos ese stream para incluir solo los números pares (esto se hace con la función lambda i -> i % 2 == 0), y finalmente usamos el método forEach para imprimir cada elemento del stream filtrado.
+
+Ahora está más claro cómo las funciones Lambda en Java pueden ayudarnos a simplificar nuestro código y hacerlo más legible.
