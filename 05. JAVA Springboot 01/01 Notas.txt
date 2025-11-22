@@ -443,3 +443,38 @@ Otro problema puede surgir al utilizar la herencia. Si la clase padre tiene un c
 Además, si no defines un constructor por defecto (un constructor sin argumentos), Java no creará uno por ti si tienes algún constructor personalizado. Esto puede ser un problema si necesitas crear un objeto sin inicializar ninguna propiedad.
 
 En resumen, los constructores personalizados en Java son una herramienta muy útil en la creación de objetos, asegurando que todas las propiedades necesarias se inicialicen. Sin embargo, deben usarse con cuidado para evitar problemas de sobrecarga y herencia. Como siempre, la mejor estrategia es usar la herramienta adecuada para el trabajo correcto y mantener tu código simple y limpio.
+
+La inmutabilidad de los datos es un concepto fundamental en programación que se refiere a la característica de que un objeto o valor no puede ser alterado después de ser creado. Esto aporta varios beneficios, como la seguridad y confiabilidad del código, ya que los datos inmutables no pueden ser modificados o corrompidos accidentalmente.
+
+Además, la inmutabilidad promueve la concurrencia segura en entornos de múltiples hilos, ya que cada hilo puede trabajar con copias de los datos inmutables sin interferir en los demás. La inmutabilidad también hace que el código sea más legible y facilita el mantenimiento, ya que el flujo de información es más claro y predecible.
+
+En Java, podemos crear objetos inmutables utilizando clases finales, atributos finales y métodos que no modifican el estado interno del objeto. Esta práctica es esencial para desarrollar programas más robustos y confiables.
+
+En el video de la lección anterior, vimos que al utilizar streams, una de las operaciones finales nos permite colocar los datos generados en otra lista. También vimos que si utilizamos directamente toList() para este propósito, se genera una lista inmutable. Por lo tanto, cuando necesitamos que la nueva lista pueda modificarse, tenemos que utilizar collect(Collectors.toList()).
+
+En Java, algunas clases nativas ya son inmutables. Algunos ejemplos incluyen:
+
+String: La clase java.lang.String es inmutable. Una vez creada, una instancia de String no puede ser modificada.
+Clases Wrapper: Las clases que representan los tipos primitivos, como Integer, Double, Character, etc., también son inmutables.
+Enum: Las enumeraciones (enum) en Java son inmutables. Las instancias de un enum se crean solo una vez y no pueden ser modificadas.
+Además de las clases nativas, la API de colecciones de Java también ofrece algunas clases inmutables en la clase utilitaria Collections. Estas clases se utilizan para crear colecciones inmutables, como listas, conjuntos y mapas. Algunos ejemplos incluyen:
+
+Collections.unmodifiableList: Crea una lista inmutable a partir de una lista existente.
+Collections.unmodifiableSet: Crea un conjunto inmutable a partir de un conjunto existente.
+Collections.unmodifiableMap: Crea un mapa inmutable a partir de un mapa existente.
+Estas clases te permiten crear versiones inmutables de colecciones existentes, haciéndolas seguras para compartir y evitando la modificación accidental.
+
+Aquí tienes un ejemplo de código:
+
+public class EjemploInmutabilidad {
+    public static void main(String[] args) {
+        List<String> listaOriginal = new ArrayList<>();
+        listaOriginal.add("A");
+        listaOriginal.add("B");
+
+        List<String> listaInmutable = Collections.unmodifiableList(listaOriginal);
+
+        // Intentar agregar un elemento a la lista inmutable resultará en una excepción
+        listaInmutable.add("C"); // Lanzará UnsupportedOperationException
+    }
+}
