@@ -392,3 +392,54 @@ En resumen, los streams y sus operaciones intermedias y finales son una forma po
 Además de las operaciones intermedias y finales mencionadas, hay muchas otras disponibles, como distinct (que elimina elementos duplicados), limit (que limita el número de elementos de la stream), skip (que salta los primeros elementos del stream), reduce (que combina los elementos de la stream en un único resultado) y muchas más.
 
 Los streams en Java son una herramienta poderosa para la manipulación de colecciones de datos. Las operaciones intermedias permiten filtrar, mapear y ordenar los elementos del stream, mientras que las operaciones finales cierran el stream y devuelven un resultado concreto. Combinando estas operaciones, podemos realizar transformaciones y acciones de manera concisa y eficiente.
+
+Vamos a explorar un tema muy interesante y muy útil en Java: los Constructores Personalizados. Estos son como un comando especial que usamos para crear e inicializar objetos de una clase. El constructor personalizado nos permite definir cómo queremos crear nuestros objetos, permitiéndonos inicializar las propiedades de la clase con los valores que especificamos. En última instancia, esto nos da más control sobre la forma en que se crean nuestros objetos.
+
+¿Cuándo son útiles los Constructores Personalizados?
+
+Consideremos un ejemplo simple. Supongamos que estás creando una clase de Carro en Java, donde cada carro tiene una marca, un modelo y un año.
+
+Sin un constructor personalizado, tendrías que crear un carro de esta manera:
+
+java
+
+Carro miCarro = new Carro();
+miCarro.setMarca("Toyota");
+miCarro.setModelo("Corolla");
+miCarro.setAno(2015);
+Esto no es eficiente y también puede dar lugar a errores, ya que nada impide crear un carro sin definir todas las propiedades.
+Copia el código
+Ahora, usando un constructor personalizado:
+
+java
+
+public class Carro {
+    private String marca;
+    private String modelo;
+    private int ano;
+
+    // Constructor personalizado
+    public Carro(String marca, String modelo, int ano) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+    }
+}
+Copia el código
+Ahora puedes crear un nuevo Carro de manera mucho más fácil y segura:
+
+java
+
+Carro miCarro = new Carro("Toyota", "Corolla", 2015);
+Copia el código
+El uso de constructores personalizados asegura que todos los carros que creamos tengan todas las propiedades necesarias definidas.
+
+Posibles problemas al usar Constructores Personalizados A pesar de ser útiles, los constructores personalizados deben usarse correctamente para evitar problemas.
+
+Un problema común es la sobrecarga de constructores, donde tienes muchos constructores en la misma clase. Esto puede hacer que tu código sea confuso y difícil de mantener.
+
+Otro problema puede surgir al utilizar la herencia. Si la clase padre tiene un constructor personalizado, la clase hija debe llamar explícitamente a ese constructor, o el compilador devolverá un error.
+
+Además, si no defines un constructor por defecto (un constructor sin argumentos), Java no creará uno por ti si tienes algún constructor personalizado. Esto puede ser un problema si necesitas crear un objeto sin inicializar ninguna propiedad.
+
+En resumen, los constructores personalizados en Java son una herramienta muy útil en la creación de objetos, asegurando que todas las propiedades necesarias se inicialicen. Sin embargo, deben usarse con cuidado para evitar problemas de sobrecarga y herencia. Como siempre, la mejor estrategia es usar la herramienta adecuada para el trabajo correcto y mantener tu código simple y limpio.
