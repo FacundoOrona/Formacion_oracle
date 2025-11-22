@@ -11,5 +11,9 @@ public record DatosEpisodio (
     String año,
     @JsonAlias("Plot")
     String plot
-) {
+) implements Comparable<DatosEpisodio> {
+    @Override
+    public int compareTo(DatosEpisodio otro) {
+        return this.tiulo.compareTo(otro.tiulo);
+    }
 }
