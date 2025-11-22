@@ -9,6 +9,7 @@ import com.aluracursos.screenmatch.service.ConvierteDatosService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Principal {
 
@@ -46,6 +47,20 @@ public class Principal {
 //        }
 
         // CON LAMBDA
-        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.tiulo())));
+        //temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.tiulo())));
+
+        //Convertir todas las informaciones a una lista del tipo DatosEpisodio
+        List<DatosEpisodio> datosEpisodios = temporadas.stream()
+                .flatMap(t -> t.episodios().stream())
+                .collect(Collectors.toList());
+
+        // TOP 5 EPISODIOS (me olvide de agregar evualuacion, asi que los voy a ordenar por nombre)
+        //.sorted(Comparator.comparing(DatosEpisodio::evualuacion).reversed())
+        datosEpisodios.stream()
+                .sorted()
+                .limit(5)
+                .forEach(System.out::println);
+
+
     }
 }
