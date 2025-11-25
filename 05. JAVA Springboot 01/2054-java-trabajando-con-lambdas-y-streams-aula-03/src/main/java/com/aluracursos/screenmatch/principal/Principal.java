@@ -54,12 +54,12 @@ public class Principal {
         System.out.println("\n Top 5 episodios");
         datosEpisodios.stream()
                 .filter(e -> !e.evaluacion().equalsIgnoreCase("N/A"))
-                .peek(e -> System.out.println("Primer filtro N/A" + e))
+                .peek(e -> System.out.println("Primer filtro N/A " + e))
                 .sorted(Comparator.comparing(DatosEpisodio::evaluacion).reversed())
-                .peek(e -> System.out.println("Segundo filtro ordenado" + e))
+                .peek(e -> System.out.println("Segundo filtro ordenado " + e))
                 .map(e -> e.titulo().toUpperCase())
                 .limit(5)
-                .peek(e -> System.out.println("Tercer limite filtro limite 5" + e))
+                .peek(e -> System.out.println("Tercer limite filtro limite " + e))
                 .forEach(System.out::println);
 
         //Convirtiendo los datos a una lista del tipo Episodio
@@ -86,5 +86,29 @@ public class Principal {
 //                                " Fecha de Lanzamiento: " + e.getFechaDeLanzamiento().format(dtf)
 //                ));
 
+        //Busca episodrios por pedazo del titulo
+//        System.out.println("Por favor ingresa el titulo del episodio que desea buscar");
+//        var pedazoTitulo = teclado.nextLine();
+//        Optional<Episodio> episodioBuscador = episodios.stream()
+//                .filter(e -> e.getTitulo().toUpperCase().contains(pedazoTitulo.toUpperCase()))
+//                .findFirst(); //Almacena en la variable opcional de ep el primer encontrado de la lista con el filtro
+//        if (episodioBuscador.isPresent()) {
+//            System.out.println("Episodio encontrado:");
+//            System.out.println("Episodio: " + episodioBuscador.get());
+//        } else {
+//            System.out.println("Episodio no encontrado");
+//        }
+
+        Map<Integer, Double> evaluacionesPorTemporada = episodios.stream()
+                .filter(e -> e.getEvaluacion() > 0.0)
+                .collect(Collectors.groupingBy(Episodio::getTemporada,
+                        Collectors.averagingDouble(Episodio::getEvaluacion)));
+        System.out.println(evaluacionesPorTemporada);
+        DoubleSummaryStatistics est = episodios.stream()
+                .filter(e -> e.getEvaluacion() > 0.0)
+                .collect(Collectors.summarizingDouble(Episodio::getEvaluacion));
+        System.out.println("Estadistica: " + est);
+        //Trabajar con los datos obtenidos, hay muchos
+        System.out.println("Episodio mejor evaluado" + est.getMax());
     }
 }
