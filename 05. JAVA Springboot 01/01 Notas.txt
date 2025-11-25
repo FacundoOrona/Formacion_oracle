@@ -653,3 +653,41 @@ La suma de los números es: 30
 Esto nos ayuda a asegurarnos de que el proceso se esté realizando correctamente. Aquí podemos ver que la suma de los números 2 + 4 + 6 + 8 + 10 se calculó correctamente, dando como resultado 30. Es decir, la función lambda en nuestro método reduce está haciendo exactamente lo que se planeó. Y pudimos verificar esto con el peek.
 
 Este es solo un ejemplo básico, pero recuerda que la función peek se puede usar en cualquier lugar dentro de tu stream, siempre que desees ver qué elementos están pasando por ese punto.
+La programación en Java utiliza Contenedores para almacenar, acceder y manipular datos. Un ejemplo particularmente útil es el Optional, un contenedor especial que puede contener o no un valor. Así que descubramos más sobre el Optional, cómo usarlo y qué prácticas seguir.
+
+¿Qué es el Optional?
+
+Optional es un contenedor de un solo valor introducido en Java 8. Puede contener un valor único o ningún valor. El principal uso de Optional es proporcionar un tipo de retorno alternativo cuando un método puede no devolver un valor.
+
+Usar null es una práctica común, pero puede llevar a errores como NullPointerException. Optional ayuda a evitar estos errores proporcionando una manera más segura de manejar valores que pueden o no estar presentes.
+
+¿Cómo usar el Optional?
+
+Creemos un método que puede devolver un valor null. Sin Optional, podría causar errores no deseados, pero con Optional, es más seguro:
+
+public Optional<String> getNombre() {
+    // El nombre puede ser null
+    return Optional.ofNullable(nombre);
+}
+Copia el código
+Aquí, Optional.ofNullable(nombre) creará un Optional que contiene el valor de nombre si no es null. Si es null, creará un Optional vacío.
+
+Ahora, para acceder al valor dentro de Optional, podemos usar ifPresent y orElse así:
+
+Optional<String> optionalNombre = getNombre();
+
+optionalNombre.ifPresent(System.out::println); // Imprimirá el nombre solo si no es null
+
+String nombre = optionalNombre.orElse("Nombre no disponible"); // Devolverá "Nombre no disponible" si nombre es null
+Copia el código
+Mejores prácticas
+
+Aunque Optional es un aliado útil, hay algunas cosas que deben tenerse en cuenta para usarlo de manera efectiva:
+
+Prefiera el retorno de Optional en lugar de devolver null: Esto hace que sus intenciones sean claras y evita errores.
+
+No use Optional.get() sin Optional.isPresent(): Optional.get() lanzará un error si el valor no está presente. Por lo tanto, es mejor verificar antes si el valor está presente.
+
+No use Optional para campos de la clase o parámetros del método: Optional debe usarse principalmente para retornos de métodos que pueden no tener valor.
+
+Comprender y usar Optional correctamente puede llevar a un código más limpio y menos propenso a errores, así que vale la pena invertir tiempo para aprenderlo.
