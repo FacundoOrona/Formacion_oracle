@@ -1,7 +1,6 @@
 Comparación entre Maven y Gradle.
 
 
-
 Para entender la diferencia entre Maven y Gradle, primero necesitamos comprender qué son y para qué sirven. Maven y Gradle son herramientas de automatización de construcción y gestión de dependencias muy populares en la comunidad Java. Ayudan a simplificar y organizar el proceso de construcción, prueba e implementación de proyectos Java, haciendo que el desarrollo sea más eficiente.
 
 ¿Qué es Maven?
