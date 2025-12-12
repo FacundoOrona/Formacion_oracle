@@ -1,9 +1,6 @@
 package com.aluracursos.screenmatch.principal;
 
-import com.aluracursos.screenmatch.model.DatosSerie;
-import com.aluracursos.screenmatch.model.DatosTemporadas;
-import com.aluracursos.screenmatch.model.Episodio;
-import com.aluracursos.screenmatch.model.Serie;
+import com.aluracursos.screenmatch.model.*;
 import com.aluracursos.screenmatch.repository.SerieRepository;
 import com.aluracursos.screenmatch.service.ConsumoAPI;
 import com.aluracursos.screenmatch.service.ConvierteDatos;
@@ -33,6 +30,8 @@ public class Principal {
                     1 - Buscar series 
                     2 - Buscar episodios
                     3 - Mostrar series buscadas
+                    4 - Buscar series
+                    5 - Mostrar top 5
                                   
                     0 - Salir
                     """;
@@ -50,6 +49,15 @@ public class Principal {
                 case 3:
                     mostrarSeriesBuscadas();
                     break;
+                case 4:
+                    buscarSeriePorTitulo();
+                    break;
+                case 5:
+                    buscarTop5();
+                    break;
+                case 6:
+                    buscarPorCategoria();
+                    break;
                 case 0:
                     System.out.println("Cerrando la aplicación...");
                     break;
@@ -58,6 +66,19 @@ public class Principal {
             }
         }
 
+    }
+    private void buscarTop5 () {
+        List<Serie> top = repository.findTop5ByOrderByEvaluacionDesc();
+        top.forEach(serie -> System.out.println("Serie: " + serie.getTitulo() + " - Nota: " + serie.getEvaluacion() ));
+    }
+
+    private void buscarPorCategoria() {
+        System.out.println("Escriba genero");
+        var genero = teclado.nextLine();
+        var categoria = Categoria.fromEsp(genero);
+        List<Serie> seriesCat = repository.findByGenero(categoria);
+        System.out.println("Las series de la categoria :" + genero);
+        seriesCat.forEach(System.out::println);
     }
 
     private DatosSerie getDatosSerie() {
@@ -113,6 +134,17 @@ public class Principal {
         series.stream()
                 .sorted(Comparator.comparing(Serie::getGenero))
                 .forEach(System.out::println);
+    }
+
+    private void buscarSeriePorTitulo(){
+        System.out.println("Escribe el nombre de la serie");
+        var nombreSerie = teclado.nextLine();
+        Optional<Serie> serieBuscada = repository.findByTituloContainsIgnoreCase(nombreSerie);
+        if (serieBuscada.isPresent()){
+            System.out.println("La serie buscada: " + serieBuscada);
+        } else {
+            System.out.println("Serie no encontrada");
+        }
     }
 }
 
