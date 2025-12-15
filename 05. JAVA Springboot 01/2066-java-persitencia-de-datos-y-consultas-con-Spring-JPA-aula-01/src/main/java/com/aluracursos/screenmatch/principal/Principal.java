@@ -172,5 +172,17 @@ public class Principal {
         filtroSeries.forEach(s -> System.out.println(s.getTitulo() +
                 " - evaluacion: " + s.getEvaluacion()));
     }
+
+    public void buscarEpisodiosPorNombre() {
+        System.out.println("Escribe el nombre del episodio");
+        String nombre = teclado.nextLine();
+
+        List<Episodio> episodios = repository.episodioPorNombre(nombre);
+
+        if (episodios.isEmpty()) {
+            System.out.println("No se encontraron episodios con ese nombre.");
+            return;
+        }
+
 }
 
