@@ -20,4 +20,10 @@ public interface SerieRepository extends JpaRepository<Serie, Long> {
     //Los : indican que el atributo es de los recibidos por parametros
     @Query(value = "SELECT s FROM Serie s WHERE s.totalTemporadas <= :totalTemporadas AND s.evaluacion >= :evaluacion")
     List<Serie> seriesPorTemporadaYEvaluacion(int totalTemporadas, Double evaluacion);
+
+//    @Query(value = "SELECT e FROM Serie s WHERE JOIN s.episodios e WHERE e.titulo ILIKE %:nombreEpisodio%")
+//    List<Episodio> episodioPorNombre(String nombreEpisodio);
+
+    @Query("""
+    SELECT e
 }
