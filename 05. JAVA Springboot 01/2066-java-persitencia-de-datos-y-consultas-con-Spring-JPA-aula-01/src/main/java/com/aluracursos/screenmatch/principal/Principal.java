@@ -32,7 +32,11 @@ public class Principal {
                     3 - Mostrar series buscadas
                     4 - Buscar series
                     5 - Mostrar top 5
-                                  
+                    6 - Buscar por categoria
+                    7 - Filtrar series por n° de temporadas y evaluacion
+                    8 - Buscar epsidodios por nombre
+                    9 - Top 5 episodios por serie
+                                   
                     0 - Salir
                     """;
             System.out.println(menu);
@@ -57,6 +61,15 @@ public class Principal {
                     break;
                 case 6:
                     buscarPorCategoria();
+                    break;
+                case 7:
+
+                    break;
+                case 8:
+
+                    break;
+                case 9:
+
                     break;
                 case 0:
                     System.out.println("Cerrando la aplicación...");
