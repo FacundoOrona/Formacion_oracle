@@ -184,5 +184,15 @@ public class Principal {
             return;
         }
 
+        episodios.forEach(e ->
+                System.out.println(
+                        e.getNumeroEpisodio() + " - " +
+                                e.getTitulo() + " - Nota: " +
+                                e.getEvaluacion()
+                )
+        );
+
+        System.out.println("**************************************************");
+    }
 }
 
