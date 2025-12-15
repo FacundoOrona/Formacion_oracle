@@ -66,7 +66,7 @@ public class Principal {
                     filtrarSeriesPorTemporadaYEvaluacion();
                     break;
                 case 8:
-
+                    buscarEpisodiosPorNombre();
                     break;
                 case 9:
 
