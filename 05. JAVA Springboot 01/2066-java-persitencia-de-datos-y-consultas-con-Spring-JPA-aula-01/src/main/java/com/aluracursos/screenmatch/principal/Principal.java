@@ -63,7 +63,7 @@ public class Principal {
                     buscarPorCategoria();
                     break;
                 case 7:
-
+                    filtrarSeriesPorTemporadaYEvaluacion();
                     break;
                 case 8:
 
@@ -158,6 +158,19 @@ public class Principal {
         } else {
             System.out.println("Serie no encontrada");
         }
+    }
+
+    public void filtrarSeriesPorTemporadaYEvaluacion() {
+        System.out.println("Filtrar series, por cuantas temporadas?");
+        var totalTemporadas = teclado.nextInt();
+        teclado.nextLine();
+        System.out.println("Con evaluacion a partir del valor:");
+        var evualuacion = teclado.nextDouble();
+        teclado.nextLine();
+        List<Serie> filtroSeries = repository.seriesPorTemporadaYEvaluacion(totalTemporadas, evualuacion);
+        System.out.println("*** Series filtradas");
+        filtroSeries.forEach(s -> System.out.println(s.getTitulo() +
+                " - evaluacion: " + s.getEvaluacion()));
     }
 }
 
