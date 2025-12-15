@@ -1,9 +1,11 @@
 package com.aluracursos.screenmatch.repository;
 
 import com.aluracursos.screenmatch.model.Categoria;
+import com.aluracursos.screenmatch.model.Episodio;
 import com.aluracursos.screenmatch.model.Serie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
