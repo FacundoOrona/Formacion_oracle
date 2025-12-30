@@ -1,6 +1,9 @@
 package med.vol.api.dto;
 
-public record DireccionDTO(
+import jakarta.persistence.Embeddable;
+
+@Embeddable
+public record DatosDireccion(
         String calle,
         String numero,
         String complemento,
