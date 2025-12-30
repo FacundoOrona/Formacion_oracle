@@ -1,15 +1,18 @@
 package med.vol.api.dto;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Embeddable
 public record DatosDireccion(
-        String calle,
+        @NotBlank String calle,
         String numero,
         String complemento,
-        String barrio,
+        @NotBlank String barrio,
+        @NotBlank @Pattern(regexp = "\\d{4}")
         String codigo_postal,
-        String ciudad,
-        String estado
+        @NotBlank String ciudad,
+        @NotBlank String estado
 ) {
 }
