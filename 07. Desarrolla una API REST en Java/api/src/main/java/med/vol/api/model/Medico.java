@@ -1,7 +1,9 @@
 package med.vol.api.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
+import med.vol.api.dto.DatosActulizarMedicoDTO;
 import med.vol.api.dto.DatosRegistroMedicoDTO;
 
 @Getter
@@ -32,5 +34,17 @@ public class Medico {
         this.documento = datos.documento();
         this.especialidad = datos.especialidad();
         this.direccion = new Direccion(datos.direccion());
+    }
+
+    public void actualizarInformacion(@Valid DatosActulizarMedicoDTO datos) {
+        if (datos.nombre() != null){
+            this.nombre = datos.nombre();
+        }
+        if (datos.telefono() != null){
+            this.telefono = datos.telefono();
+        }
+        if (datos.direccion() != null){
+            this.direccion.actualizarDireccion(datos.direccion());
+        }
     }
 }
