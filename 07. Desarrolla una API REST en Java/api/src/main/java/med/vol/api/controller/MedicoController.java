@@ -1,6 +1,7 @@
 package med.vol.api.controller;
 
 import jakarta.validation.Valid;
+import med.vol.api.dto.DatosActulizarMedicoDTO;
 import med.vol.api.dto.DatosListaMedicoDTO;
 import med.vol.api.dto.DatosRegistroMedicoDTO;
 import med.vol.api.model.Medico;
@@ -35,5 +36,11 @@ public class MedicoController {
         return medicoRepository.findAll(paginacion).map(DatosListaMedicoDTO::new);
     }
 
+    @Transactional
+    @PutMapping
+    public void actualizar(@RequestBody @Valid DatosActulizarMedicoDTO datos) {
+        var medico = medicoRepository.getReferenceById(datos.id());
+        medico.actualizarInformacion(datos);
+    }
 
 }
