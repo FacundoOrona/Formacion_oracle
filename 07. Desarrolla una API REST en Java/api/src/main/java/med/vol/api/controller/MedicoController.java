@@ -14,7 +14,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.sound.midi.MidiMessage;
 import java.util.List;
 
 @RestController
@@ -26,8 +28,11 @@ public class MedicoController {
 
     @Transactional
     @PostMapping
-    public ResponseEntity registar(@RequestBody @Valid DatosRegistroMedicoDTO datos) {
-        medicoRepository.save(new Medico(datos));
+    public ResponseEntity registar(@RequestBody @Valid DatosRegistroMedicoDTO datos, UriComponentsBuilder uriComponentsBuilder) {
+        var medico = new Medico(datos);
+        medicoRepository.save(medico);
+        var uri = uriComponentsBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DatosDetalleMedico(medico));
     }
 
     @GetMapping
@@ -35,7 +40,6 @@ public class MedicoController {
                                                 sort = {"nombre"})
                                                 Pageable paginacion) {
         var page = medicoRepository.findAllByActivoTrue(paginacion).map(DatosListaMedicoDTO::new);
-
         return ResponseEntity.ok(page); //200
     }
 
@@ -44,7 +48,6 @@ public class MedicoController {
     public ResponseEntity actualizar(@RequestBody @Valid DatosActulizarMedicoDTO datos) {
         var medico = medicoRepository.getReferenceById(datos.id());
         medico.actualizarInformacion(datos);
-
         return ResponseEntity.ok(new DatosDetalleMedico(medico));
     }
 
@@ -53,8 +56,14 @@ public class MedicoController {
     public ResponseEntity darBaja(@PathVariable Long id) {
         var medico = medicoRepository.getReferenceById(id);
         medico.darBaja();
-
         return ResponseEntity.noContent().build(); //204
+    }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity buscarPorId(@PathVariable Long id) {
+        var medico = medicoRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DatosDetalleMedico(medico));
     }
 
 }
