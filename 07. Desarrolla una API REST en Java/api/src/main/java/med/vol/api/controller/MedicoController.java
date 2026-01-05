@@ -2,6 +2,7 @@ package med.vol.api.controller;
 
 import jakarta.validation.Valid;
 import med.vol.api.dto.DatosActulizarMedicoDTO;
+import med.vol.api.dto.DatosDetalleMedico;
 import med.vol.api.dto.DatosListaMedicoDTO;
 import med.vol.api.dto.DatosRegistroMedicoDTO;
 import med.vol.api.model.Medico;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,30 +26,35 @@ public class MedicoController {
 
     @Transactional
     @PostMapping
-    public void registar(@RequestBody @Valid DatosRegistroMedicoDTO datos) {
+    public ResponseEntity registar(@RequestBody @Valid DatosRegistroMedicoDTO datos) {
         medicoRepository.save(new Medico(datos));
     }
 
-    /// medicos?size=10&page=1
     @GetMapping
-    public Page<DatosListaMedicoDTO> listar(@PageableDefault(size = 10, page = 0,
+    public ResponseEntity<Page<DatosListaMedicoDTO>> listar(@PageableDefault(size = 10, page = 0,
                                                 sort = {"nombre"})
                                                 Pageable paginacion) {
-        return medicoRepository.findAllByActivoTrue(paginacion).map(DatosListaMedicoDTO::new);
+        var page = medicoRepository.findAllByActivoTrue(paginacion).map(DatosListaMedicoDTO::new);
+
+        return ResponseEntity.ok(page); //200
     }
 
     @Transactional
     @PutMapping
-    public void actualizar(@RequestBody @Valid DatosActulizarMedicoDTO datos) {
+    public ResponseEntity actualizar(@RequestBody @Valid DatosActulizarMedicoDTO datos) {
         var medico = medicoRepository.getReferenceById(datos.id());
         medico.actualizarInformacion(datos);
+
+        return ResponseEntity.ok(new DatosDetalleMedico(medico));
     }
 
     @Transactional
     @DeleteMapping("/{id}")
-    public void darBaja(@PathVariable Long id) {
+    public ResponseEntity darBaja(@PathVariable Long id) {
         var medico = medicoRepository.getReferenceById(id);
         medico.darBaja();
+
+        return ResponseEntity.noContent().build(); //204
     }
 
 }
