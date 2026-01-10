@@ -2,6 +2,7 @@ package med.vol.api.controller;
 
 import jakarta.validation.Valid;
 import med.vol.api.dto.DatosAutenticacionDTO;
+import med.vol.api.dto.DatosTokenJWTDTO;
 import med.vol.api.infra.security.TokenService;
 import med.vol.api.model.Usuario;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +29,11 @@ public class AutenticacionController {
     @PostMapping("/login")
     public ResponseEntity iniciarSesion(@Valid @RequestBody DatosAutenticacionDTO datos) {
 
-        var token = new UsernamePasswordAuthenticationToken(datos.login(), datos.contrasena());
-        var auth = manager.authenticate(token);
+        var authenticationToken = new UsernamePasswordAuthenticationToken(datos.login(), datos.contrasena());
+        var authentication = manager.authenticate(authenticationToken);
 
-        return ResponseEntity.ok(tokenService.generarToken((Usuario) auth.getPrincipal()));
+        var tokenJWT = tokenService.generarToken((Usuario) authentication.getPrincipal());
+
+        return ResponseEntity.ok(new DatosTokenJWTDTO(tokenJWT));
     }
 }
