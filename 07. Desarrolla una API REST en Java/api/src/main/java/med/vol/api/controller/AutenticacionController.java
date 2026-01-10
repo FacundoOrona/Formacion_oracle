@@ -3,6 +3,7 @@ package med.vol.api.controller;
 import jakarta.validation.Valid;
 import med.vol.api.dto.DatosAutenticacionDTO;
 import med.vol.api.infra.security.TokenService;
+import med.vol.api.model.Usuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,6 +31,6 @@ public class AutenticacionController {
         var token = new UsernamePasswordAuthenticationToken(datos.login(), datos.contrasena());
         var auth = manager.authenticate(token);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(tokenService.generarToken((Usuario) auth.getPrincipal()));
     }
 }
