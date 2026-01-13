@@ -18,3 +18,12 @@ public class SecurityFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
+    private String obtenerToken(HttpServletRequest request) {
+        var authHeader = request.getHeader("Authorization");
+        if (authHeader == null){
+            throw new RuntimeException("Token no enviado en el header");
+        } else {
+            return authHeader.replace("Bearer ", "");
+        }
+    }
