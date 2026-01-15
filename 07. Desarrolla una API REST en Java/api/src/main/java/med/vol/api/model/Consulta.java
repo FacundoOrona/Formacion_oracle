@@ -29,4 +29,8 @@ public class Consulta {
     private Paciente paciente;
 
     private LocalDateTime fecha;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "especialidad", nullable = false)
+    private Especialidad especialidad;
 }
