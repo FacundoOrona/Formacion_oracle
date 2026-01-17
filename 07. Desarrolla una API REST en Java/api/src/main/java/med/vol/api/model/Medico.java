@@ -18,12 +18,15 @@ public class Medico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Boolean activo;
+    @Column(nullable = false)
+    private Boolean activo = true;
+
     private String nombre;
     private String email;
     private String telefono;
     private String documento;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Especialidad especialidad;
     @Embedded
     private Direccion direccion;
@@ -41,13 +44,13 @@ public class Medico {
     }
 
     public void actualizarInformacion(@Valid DatosActulizarMedico datos) {
-        if (datos.nombre() != null){
+        if (datos.nombre() != null) {
             this.nombre = datos.nombre();
         }
-        if (datos.telefono() != null){
+        if (datos.telefono() != null) {
             this.telefono = datos.telefono();
         }
-        if (datos.direccion() != null){
+        if (datos.direccion() != null) {
             this.direccion.actualizarDireccion(datos.direccion());
         }
     }
