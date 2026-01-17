@@ -26,7 +26,9 @@ public class Paciente {
     private String documento;
     @Embedded
     private Direccion direccion;
-    private Boolean activo;
+    @Column(nullable = false)
+    private Boolean activo = true;
+
 
     public Paciente(DatosRegistroPaciente datos) {
         this.activo = true;
